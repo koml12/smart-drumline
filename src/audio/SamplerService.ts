@@ -1,13 +1,17 @@
-import { container, injectable } from "tsyringe";
+import { container, singleton } from "tsyringe";
 import * as Tone from "tone";
 import Sampler from "./Sampler";
 import { BassDrum, Drum, Instrument } from "../instrument";
 
-@injectable()
+@singleton()
 class SamplerService {
   samplers: Partial<Record<Drum, Sampler>> = {};
 
-  getSampler(drum: Drum): Promise<Sampler | undefined> {
+  async initializeSamplers() {
+    await this.getSampler("BASS");
+  }
+
+  async getSampler(drum: Drum): Promise<Sampler | undefined> {
     if (this.samplers[drum]) {
       console.log("cached sampler");
       return Promise.resolve(this.samplers[drum]);
@@ -16,7 +20,7 @@ class SamplerService {
     console.log("creating new sampler");
 
     let instrument: Instrument;
-    if (drum === Drum.BASS) {
+    if (drum === "BASS") {
       instrument = container.resolve(BassDrum);
     } else {
       instrument = container.resolve(BassDrum);
