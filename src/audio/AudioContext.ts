@@ -3,17 +3,17 @@ import { injectable } from "tsyringe";
 
 @injectable()
 class AudioContext {
-    isStarted: boolean;
+  isStarted: boolean;
 
-    constructor() {
-        this.isStarted = false;
-    }
+  constructor() {
+    this.isStarted = false;
+  }
 
-    async start() {
-        if (!this.isStarted) {
-            await Tone.start();
-        }
+  async start() {
+    if (!this.isStarted) {
+      await Tone.start();
     }
+  }
 }
 
 export default AudioContext;

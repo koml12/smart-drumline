@@ -3,17 +3,15 @@ import { injectable } from "tsyringe";
 
 @injectable()
 class Sampler {
+  sampler: Tone.Synth;
 
-    sampler: Tone.Synth;
+  constructor() {
+    this.sampler = new Tone.Synth().toDestination();
+  }
 
-    constructor() {
-        this.sampler = new Tone.Synth().toDestination();
-    }
-
-    playNote(note: string) {
-        this.sampler.triggerAttackRelease(note, "32n"); 
-    }
-
+  playNote(note: string): void {
+    this.sampler.triggerAttackRelease(note, "32n");
+  }
 }
 
 export default Sampler;
