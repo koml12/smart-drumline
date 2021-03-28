@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { container } from "tsyringe";
 import { AudioContext } from "./audio";
-import SamplerService from "./audio/SamplerService";
 import { Drum } from "./instrument";
+import { SequencerService } from "./playback";
+import split from "./examples/HB17";
 
 function App() {
-  let samplerService: SamplerService = useRef(container.resolve(SamplerService))
-    .current;
+  let sequencerService: SequencerService = useRef(
+    container.resolve(SequencerService)
+  ).current;
 
   useEffect(() => {
     const setUpAudio = async () => {
@@ -17,9 +19,7 @@ function App() {
   }, []);
 
   const handleClick = async () => {
-    const sampler = await samplerService.getSampler(Drum.BASS);
-    console.log(sampler?.sampler);
-    sampler?.playNote("G0");
+    await sequencerService.play(split, 172, Drum.BASS);
   };
 
   return (

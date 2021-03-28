@@ -10,7 +10,7 @@ import { injectable } from "tsyringe";
 
 @injectable()
 class BassDrum implements Instrument {
-  getNoteMapping(): Partial<Record<Note, string>> {
+  getSampleMapping(): Partial<Record<Note, string>> {
     return {
       G0,
       E0,
@@ -18,6 +18,17 @@ class BassDrum implements Instrument {
       A0,
       F0,
       B0,
+    };
+  }
+
+  getNoteMapping(): Record<string, Note> {
+    return {
+      "1": "G0",
+      "2": "E0",
+      "3": "C0",
+      "4": "A0",
+      "5": "F0",
+      U: "B0",
     };
   }
 }

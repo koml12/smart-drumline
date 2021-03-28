@@ -9,8 +9,11 @@ class SamplerService {
 
   getSampler(drum: Drum): Promise<Sampler | undefined> {
     if (this.samplers[drum]) {
+      console.log("cached sampler");
       return Promise.resolve(this.samplers[drum]);
     }
+
+    console.log("creating new sampler");
 
     let instrument: Instrument;
     if (drum === Drum.BASS) {
@@ -20,9 +23,8 @@ class SamplerService {
     }
 
     return new Promise((resolve) => {
-      const sampler = new Tone.Sampler(instrument.getNoteMapping(), () => {
-        sampler.debug = true;
-        this.samplers[drum] = new Sampler(sampler.toDestination());
+      const sampler = new Tone.Sampler(instrument.getSampleMapping(), () => {
+        this.samplers[drum] = new Sampler(sampler.toDestination(), instrument);
         resolve(this.samplers[drum]);
       });
     });

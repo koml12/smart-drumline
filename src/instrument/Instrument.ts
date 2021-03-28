@@ -11,7 +11,9 @@ enum Drum {
  * Defines a mapping between Notes (i.e. A0, B4, F#5) to mp3 files
  */
 interface Instrument {
-  getNoteMapping(): Partial<Record<Note, string>>;
+  getSampleMapping(): Partial<Record<Note, string>>;
+
+  getNoteMapping(): Record<string, Note>;
 }
 
 export default Instrument;
