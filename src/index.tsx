@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'reflect-metadata';   // Enables dependency injection annotations
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
