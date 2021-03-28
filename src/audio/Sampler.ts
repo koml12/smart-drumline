@@ -3,10 +3,10 @@ import { injectable } from "tsyringe";
 
 @injectable()
 class Sampler {
-  sampler: Tone.Synth;
+  sampler: Tone.Sampler;
 
-  constructor() {
-    this.sampler = new Tone.Synth().toDestination();
+  constructor(sampler: Tone.Sampler) {
+    this.sampler = sampler;
   }
 
   playNote(note: string): void {

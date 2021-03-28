@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { container } from "tsyringe";
-import { AudioContext, Sampler } from "./audio";
+import { AudioContext } from "./audio";
+import SamplerService from "./audio/SamplerService";
+import { Drum } from "./instrument";
 
 function App() {
-  const sampler = container.resolve(Sampler);
+  let samplerService: SamplerService = useRef(container.resolve(SamplerService))
+    .current;
 
   useEffect(() => {
     const setUpAudio = async () => {
@@ -13,14 +16,16 @@ function App() {
     setUpAudio();
   }, []);
 
-  const handleClick = () => {
-    sampler.playNote("C4");
+  const handleClick = async () => {
+    const sampler = await samplerService.getSampler(Drum.BASS);
+    console.log(sampler?.sampler);
+    sampler?.playNote("G0");
   };
 
   return (
     <div className="App">
       <p>Hello world</p>
-      <button onClick={handleClick}>Play something!</button>
+      <button onClick={async () => await handleClick()}>Play something!</button>
     </div>
   );
 }
