@@ -6,6 +6,7 @@ import C0 from "../audio/samples/bass/3_hit_1.mp3";
 import A0 from "../audio/samples/bass/4_hit_1.mp3";
 import F0 from "../audio/samples/bass/5_hit_1.mp3";
 import B0 from "../audio/samples/bass/6_hit_1.mp3";
+import D0 from "../audio/samples/bass/metronome_2.mp3";
 import { injectable } from "tsyringe";
 
 @injectable()
@@ -18,6 +19,7 @@ class BassDrum implements Instrument {
       A0,
       F0,
       B0,
+      D0,
     };
   }
 
@@ -29,6 +31,7 @@ class BassDrum implements Instrument {
       "4": "A0",
       "5": "F0",
       U: "B0",
+      M: "D0",
     };
   }
 }

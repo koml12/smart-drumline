@@ -11,7 +11,12 @@ class SequencerService {
     this.samplerService = container.resolve(SamplerService);
   }
 
-  async play(music: ParsedNote[], bpm: number, drum: Drum) {
+  async play(
+    music: ParsedNote[],
+    bpm: number,
+    drum: Drum,
+    useMetronome = false
+  ) {
     const sampler = await this.samplerService.getSampler(drum);
 
     const times = getNoteTimes(music, bpm);
@@ -21,6 +26,15 @@ class SequencerService {
     for (let i = 0; i < music.length; i++) {
       sampler?.playNote(music[i].note, now + accumulated, music[i].velocity);
       accumulated += times[i];
+    }
+
+    if (useMetronome) {
+      const secondsPerBeat = 60.0 / bpm;
+      let beats = 0;
+      while (beats * secondsPerBeat <= accumulated) {
+        sampler?.playNote("M", now + beats * secondsPerBeat);
+        beats++;
+      }
     }
   }
 }

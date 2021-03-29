@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   const handleClick = async () => {
-    await sequencerService.play(split, 172, "BASS");
+    await sequencerService.play(split, 172, "BASS", true);
   };
 
   return (

@@ -1,0 +1,132 @@
+import { ParsedNote } from "../playback/ParsedNote";
+
+const split: ParsedNote[] = [
+  // Measure 1
+  { note: "1", value: 4 },
+  { note: "2", value: 8 },
+  { note: "2", value: 8 },
+  { note: "1", value: 4 },
+  { note: "2", value: 8 },
+  { note: "2", value: 8 },
+
+  { note: "1", value: 4 },
+  { note: "2", value: 8 },
+  { note: "2", value: 8 },
+  { note: "2", value: 8 },
+  { note: "2", value: 8 },
+  { note: "1", value: 4 },
+
+  { note: "1", value: 4 },
+  { note: "2", value: 8 },
+  { note: "3", value: 8 },
+  { note: "2", value: 8 },
+  { note: "3", value: 8 },
+  { note: "1", value: 4 },
+
+  { note: "2", value: 8 },
+  { note: "3", value: 8 },
+  { note: "2", value: 8 },
+  { note: "3", value: 8 },
+  { note: "1", value: 2 },
+
+  // Measure 2
+  { note: "1", value: 10 },
+  { note: "1", value: 10 },
+  { note: "2", value: 10 },
+  { note: "2", value: 10 },
+  { note: "3", value: 10 },
+  { note: "3", value: 10 },
+  { note: "2", value: 10 },
+  { note: "2", value: 10 },
+  { note: "3", value: 10 },
+  { note: "3", value: 10 },
+
+  { note: "1", value: 4 },
+  { note: "1", value: 4 },
+  { note: "4", value: 12 },
+  { note: "3", value: 12 },
+  { note: "2", value: 12 },
+  { note: "1", value: 4 },
+
+  { note: "4", value: 12 },
+  { note: "3", value: 12 },
+  { note: "2", value: 12 },
+  { note: "1", value: 4 },
+  { note: "4", value: 4 },
+  { note: "4", value: 4 },
+
+  { note: "1", value: 12 },
+  { note: "2", value: 12 },
+  { note: "3", value: 12 },
+  { note: "4", value: 4 },
+  { note: "1", value: 12 },
+  { note: "2", value: 12 },
+  { note: "3", value: 12 },
+  { note: "4", value: 4 },
+
+  // Measure 3:
+  { note: "5", value: 6 },
+  { note: "4", value: 6 },
+  { note: "3", value: 6 },
+  { note: "2", value: 6 },
+  { note: "1", value: 6 },
+  { note: "2", value: 6 },
+
+  { note: "3", value: 5 },
+  { note: "4", value: 5 },
+  { note: "5", value: 5 },
+  { note: "4", value: 5 },
+  { note: "3", value: 5 },
+
+  { note: "2", value: 4 },
+  { note: "1", value: 4 },
+  { note: "2", value: 4 },
+  { note: "3", value: 4 },
+
+  { note: "4", value: 3 },
+  { note: "5", value: 3 },
+  { note: "4", value: 3 },
+
+  // Measure 4
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+  { note: "1", value: 9 },
+  { note: "2", value: 9 },
+  { note: "3", value: 9 },
+];
+
+export default split;
