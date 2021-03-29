@@ -29,7 +29,11 @@ class SequencerService {
 
       let accumulated = 0;
       for (let i = 0; i < part.length; i++) {
-        sampler?.playNote(part[i].note, now + accumulated, part[i].velocity);
+        sampler?.playNote(
+          part[i].note.split(","),
+          now + accumulated,
+          part[i].velocity
+        );
         accumulated += times[i];
       }
       if (accumulated > maxDuration) {
@@ -42,7 +46,7 @@ class SequencerService {
       const secondsPerBeat = 60.0 / bpm;
       let beats = 0;
       while (beats * secondsPerBeat <= maxDuration) {
-        sampler?.playNote(Metronome.CLICK, now + beats * secondsPerBeat);
+        sampler?.playNote([Metronome.CLICK], now + beats * secondsPerBeat);
         beats++;
       }
     }

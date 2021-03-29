@@ -13,12 +13,12 @@ class Sampler {
   }
 
   playNote(
-    note: string,
+    notes: string[],
     time: Tone.Unit.Time,
     velocity?: Tone.Unit.NormalRange
   ): void {
     this.sampler.triggerAttackRelease(
-      this.instrument.getNoteMapping()[note],
+      notes.map((note) => this.instrument.getNoteMapping()[note]),
       "32n",
       time,
       velocity
