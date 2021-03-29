@@ -1,6 +1,6 @@
 import { container, injectable } from "tsyringe";
 import { SamplerService } from "../audio";
-import { Drum } from "../instrument";
+import { Drum, Metronome } from "../instrument";
 import getNoteTimes from "./getNoteTimes";
 import { ParsedNote } from "./ParsedNote";
 
@@ -12,27 +12,37 @@ class SequencerService {
   }
 
   async play(
-    music: ParsedNote[],
+    music: Partial<Record<Drum, ParsedNote[]>>,
     bpm: number,
-    drum: Drum,
     useMetronome = false
   ) {
-    const sampler = await this.samplerService.getSampler(drum);
+    const samplers = this.samplerService.getAllSamplers();
 
-    const times = getNoteTimes(music, bpm);
+    const now = samplers.BASS?.sampler.now() ?? 0;
 
-    const now = sampler?.sampler.now() ? sampler?.sampler.now() : 0;
-    let accumulated = 0;
-    for (let i = 0; i < music.length; i++) {
-      sampler?.playNote(music[i].note, now + accumulated, music[i].velocity);
-      accumulated += times[i];
+    let maxDuration = 0;
+
+    for (let drum in music) {
+      const sampler = samplers[drum as Drum];
+      const part = music[drum as Drum] ?? [];
+      const times = getNoteTimes(part, bpm);
+
+      let accumulated = 0;
+      for (let i = 0; i < part.length; i++) {
+        sampler?.playNote(part[i].note, now + accumulated, part[i].velocity);
+        accumulated += times[i];
+      }
+      if (accumulated > maxDuration) {
+        maxDuration = accumulated;
+      }
     }
 
     if (useMetronome) {
+      const sampler = samplers.METRONOME;
       const secondsPerBeat = 60.0 / bpm;
       let beats = 0;
-      while (beats * secondsPerBeat <= accumulated) {
-        sampler?.playNote("M", now + beats * secondsPerBeat);
+      while (beats * secondsPerBeat <= maxDuration) {
+        sampler?.playNote(Metronome.CLICK, now + beats * secondsPerBeat);
         beats++;
       }
     }

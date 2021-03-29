@@ -1,14 +1,19 @@
 import { container, singleton } from "tsyringe";
 import * as Tone from "tone";
 import Sampler from "./Sampler";
-import { BassDrum, Drum, Instrument } from "../instrument";
+import { BassDrum, Drum, Instrument, Metronome } from "../instrument";
 
 @singleton()
 class SamplerService {
   samplers: Partial<Record<Drum, Sampler>> = {};
 
+  getAllSamplers() {
+    return this.samplers;
+  }
+
   async initializeSamplers() {
     await this.getSampler("BASS");
+    await this.getSampler("METRONOME");
   }
 
   async getSampler(drum: Drum): Promise<Sampler | undefined> {
@@ -22,8 +27,10 @@ class SamplerService {
     let instrument: Instrument;
     if (drum === "BASS") {
       instrument = container.resolve(BassDrum);
+    } else if (drum === "METRONOME") {
+      instrument = container.resolve(Metronome);
     } else {
-      instrument = container.resolve(BassDrum);
+      instrument = container.resolve(Metronome);
     }
 
     return new Promise((resolve) => {

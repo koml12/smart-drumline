@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { container } from "tsyringe";
 import { AudioContext, SamplerService } from "./audio";
 import { SequencerService } from "./playback";
-import split from "./examples/HB17";
+import hiLow from "./examples/HiLow";
+import hb from "./examples/HB17";
 
 function App() {
   let sequencerService: SequencerService = useRef(
@@ -22,14 +23,23 @@ function App() {
     setUpSamplers();
   }, []);
 
-  const handleClick = async () => {
-    await sequencerService.play(split, 172, "BASS", true);
+  const handleHiLowClick = async () => {
+    await sequencerService.play({ BASS: hiLow }, 124, true);
+  };
+
+  const handleHBClick = async () => {
+    await sequencerService.play({ BASS: hb }, 172, true);
   };
 
   return (
     <div className="App">
       <p>Hello world</p>
-      <button onClick={async () => await handleClick()}>Play something!</button>
+      <button onClick={async () => await handleHiLowClick()}>
+        Play HiLow Intro
+      </button>
+      <button onClick={async () => await handleHBClick()}>
+        Play HB '17 Bass Feature
+      </button>
     </div>
   );
 }
