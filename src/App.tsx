@@ -4,6 +4,8 @@ import { AudioContext, SamplerService } from "./audio";
 import { SequencerService } from "./playback";
 import hiLow from "./examples/HiLow";
 import hb from "./examples/HB17";
+import adSnare from "./examples/AD/snare";
+import adBass from "./examples/AD/bass";
 
 function App() {
   let sequencerService: SequencerService = useRef(
@@ -31,6 +33,10 @@ function App() {
     await sequencerService.play({ BASS: hb }, 172, true);
   };
 
+  const handleADClick = async () => {
+    await sequencerService.play({ SNARE: adSnare, BASS: adBass }, 184, true);
+  };
+
   return (
     <div className="App">
       <p>Hello world</p>
@@ -40,6 +46,7 @@ function App() {
       <button onClick={async () => await handleHBClick()}>
         Play HB '17 Bass Feature
       </button>
+      <button onClick={async () => await handleADClick()}>Play AD</button>
     </div>
   );
 }
