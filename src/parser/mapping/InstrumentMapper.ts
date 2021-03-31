@@ -14,7 +14,7 @@ import { Drum } from "../../instrument";
 interface InstrumentMapper {
   getInstrumentMapping(): Record<string, Drum>;
 
-  getPartMapping(): Record<string, string>;
+  getPartMapping(): Partial<Record<Drum, Record<string, string>>>;
 }
 
 export default InstrumentMapper;

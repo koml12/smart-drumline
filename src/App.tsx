@@ -25,19 +25,8 @@ function App() {
       samplerService.initializeSamplers();
     };
 
-    const parseXML = async () => {
-      const xmlParser = container.resolve(MusicXMLParser);
-      const response = await axios.get(xml, {
-        headers: {
-          "Content-Type": "application/xml; charset=utf-8",
-        },
-      });
-      xmlParser.parse(response.data);
-    };
-
     setUpAudio();
     setUpSamplers();
-    parseXML();
   }, []);
 
   const handleHiLowClick = async () => {
@@ -52,6 +41,16 @@ function App() {
     await sequencerService.play({ SNARE: adSnare, BASS: adBass }, 184, true);
   };
 
+  const parseXML = async () => {
+    const xmlParser = container.resolve(MusicXMLParser);
+    const response = await axios.get(xml, {
+      headers: {
+        "Content-Type": "application/xml; charset=utf-8",
+      },
+    });
+    await sequencerService.play(xmlParser.parse(response.data), 160, true);
+  };
+
   return (
     <div className="App">
       <p>Hello world</p>
@@ -62,6 +61,7 @@ function App() {
         Play HB '17 Bass Feature
       </button>
       <button onClick={async () => await handleADClick()}>Play AD</button>
+      <button onClick={async () => await parseXML()}>Play XML file</button>
     </div>
   );
 }
