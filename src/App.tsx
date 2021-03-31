@@ -6,6 +6,9 @@ import hiLow from "./examples/HiLow";
 import hb from "./examples/HB17";
 import adSnare from "./examples/AD/snare";
 import adBass from "./examples/AD/bass";
+import xml from "./examples/Test_Score.musicxml";
+import MusicXMLParser from "./parser/MusicXMLParser";
+import axios from "axios";
 
 function App() {
   let sequencerService: SequencerService = useRef(
@@ -21,8 +24,20 @@ function App() {
       const samplerService = container.resolve(SamplerService);
       samplerService.initializeSamplers();
     };
+
+    const parseXML = async () => {
+      const xmlParser = container.resolve(MusicXMLParser);
+      const response = await axios.get(xml, {
+        headers: {
+          "Content-Type": "application/xml; charset=utf-8",
+        },
+      });
+      xmlParser.parse(response.data);
+    };
+
     setUpAudio();
     setUpSamplers();
+    parseXML();
   }, []);
 
   const handleHiLowClick = async () => {
