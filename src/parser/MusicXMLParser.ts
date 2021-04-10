@@ -11,6 +11,7 @@ class MusicXMLParser implements Parser {
     const mappingService = container.resolve(MappingService);
 
     const score = parseScore(xml);
+    console.log(score);
     const software = score.identification.encoding?.softwares?.[0] ?? "";
     const mapper = mappingService.getMapper(software);
 
@@ -47,7 +48,12 @@ class MusicXMLParser implements Parser {
             // console.log(part);
             const noteId = part.instrument.id;
             const note = drumParts[noteId];
-            const value = part.noteType.duration / 4;
+            const value = part.timeModification
+              ? (((part.timeModification.actualNotes * 1.0) /
+                  part.timeModification.normalNotes) *
+                  part.noteType.duration) /
+                4
+              : part.noteType.duration / 4;
             return { note, value };
           });
 
