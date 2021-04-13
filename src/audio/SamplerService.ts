@@ -18,9 +18,14 @@ class SamplerService {
   }
 
   async initializeSamplers() {
-    await this.getSampler("BASS");
-    await this.getSampler("METRONOME");
-    await this.getSampler("SNARE");
+    const bass = await this.getSampler("BASS");
+    this.samplers["BASS"] = bass;
+
+    const metronome = await this.getSampler("METRONOME");
+    this.samplers["METRONOME"] = metronome;
+
+    const snare = await this.getSampler("SNARE");
+    this.samplers["SNARE"] = snare;
   }
 
   async getSampler(drum: Drum): Promise<Sampler | undefined> {
@@ -42,6 +47,13 @@ class SamplerService {
       instrument = container.resolve(Metronome);
     }
 
+    return this.createSampler(instrument, drum);
+  }
+
+  async createSampler(
+    instrument: Instrument,
+    drum: Drum
+  ): Promise<Sampler | undefined> {
     return new Promise((resolve) => {
       const sampler = new Tone.Sampler(instrument.getSampleMapping(), () => {
         this.samplers[drum] = new Sampler(sampler.toDestination(), instrument);
