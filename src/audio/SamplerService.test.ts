@@ -1,6 +1,7 @@
 import { container } from "tsyringe";
 import * as Tone from "tone";
 import { Sampler, SamplerService } from ".";
+import { BassDrum } from "../instrument";
 
 describe("SamplerService", () => {
   let samplerService: SamplerService;
@@ -26,6 +27,14 @@ describe("SamplerService", () => {
       await samplerService.initializeSamplers();
       const samplers = samplerService.getAllSamplers();
       expect(Object.keys(samplers).length).toBeGreaterThan(0);
+    });
+  });
+
+  describe("getSampler", () => {
+    it("should return cached sampler after initialization", async () => {
+      await samplerService.initializeSamplers();
+      const sampler = await samplerService.getSampler("BASS");
+      expect(sampler?.instrument).toBeInstanceOf(BassDrum);
     });
   });
 });

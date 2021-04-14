@@ -41,8 +41,6 @@ class SamplerService {
       instrument = container.resolve(SnareDrum);
     } else if (drum === "BASS") {
       instrument = container.resolve(BassDrum);
-    } else if (drum === "METRONOME") {
-      instrument = container.resolve(Metronome);
     } else {
       instrument = container.resolve(Metronome);
     }

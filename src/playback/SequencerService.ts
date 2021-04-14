@@ -18,7 +18,7 @@ class SequencerService {
   ) {
     const samplers = this.samplerService.getAllSamplers();
 
-    const now = samplers.BASS?.sampler.now() ?? 0;
+    const now = samplers.METRONOME?.sampler?.now() ?? 0;
 
     let maxDuration = 0;
 
