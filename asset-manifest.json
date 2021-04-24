@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.js": "/smart-drumline/static/js/main.87efc342.chunk.js",
+    "main.js.map": "/smart-drumline/static/js/main.87efc342.chunk.js.map",
+    "runtime-main.js": "/smart-drumline/static/js/runtime-main.07e1668e.js",
+    "runtime-main.js.map": "/smart-drumline/static/js/runtime-main.07e1668e.js.map",
+    "static/js/2.f8e21cf3.chunk.js": "/smart-drumline/static/js/2.f8e21cf3.chunk.js",
+    "static/js/2.f8e21cf3.chunk.js.map": "/smart-drumline/static/js/2.f8e21cf3.chunk.js.map",
+    "static/js/3.ecb65949.chunk.js": "/smart-drumline/static/js/3.ecb65949.chunk.js",
+    "static/js/3.ecb65949.chunk.js.map": "/smart-drumline/static/js/3.ecb65949.chunk.js.map",
+    "index.html": "/smart-drumline/index.html",
+    "static/js/2.f8e21cf3.chunk.js.LICENSE.txt": "/smart-drumline/static/js/2.f8e21cf3.chunk.js.LICENSE.txt",
+    "static/media/1_hit_1.ab33e2d8.mp3": "/smart-drumline/static/media/1_hit_1.ab33e2d8.mp3",
+    "static/media/2_hit_1.863d6f08.mp3": "/smart-drumline/static/media/2_hit_1.863d6f08.mp3",
+    "static/media/3_hit_1.ec447fcf.mp3": "/smart-drumline/static/media/3_hit_1.ec447fcf.mp3",
+    "static/media/4_hit_1.f6d92451.mp3": "/smart-drumline/static/media/4_hit_1.f6d92451.mp3",
+    "static/media/5_hit_1.bcfe0f5f.mp3": "/smart-drumline/static/media/5_hit_1.bcfe0f5f.mp3",
+    "static/media/6_hit_1.d81c4c43.mp3": "/smart-drumline/static/media/6_hit_1.d81c4c43.mp3",
+    "static/media/Test_Score.d130aa2d.musicxml": "/smart-drumline/static/media/Test_Score.d130aa2d.musicxml",
+    "static/media/hit_1.4ab3dac3.mp3": "/smart-drumline/static/media/hit_1.4ab3dac3.mp3",
+    "static/media/metronome_2.fbc90ef6.mp3": "/smart-drumline/static/media/metronome_2.fbc90ef6.mp3",
+    "static/media/ping_shot_1.3fc723a8.mp3": "/smart-drumline/static/media/ping_shot_1.3fc723a8.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.07e1668e.js",
+    "static/js/2.f8e21cf3.chunk.js",
+    "static/js/main.87efc342.chunk.js"
+  ]
+}
