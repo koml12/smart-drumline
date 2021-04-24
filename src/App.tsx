@@ -54,6 +54,7 @@ function App() {
   return (
     <div className="App">
       <p>Hello world</p>
+      <p>This is the Smart Drumline app</p>
       <button id="hiLow-btn" onClick={async () => await handleHiLowClick()}>
         Play HiLow Intro
       </button>

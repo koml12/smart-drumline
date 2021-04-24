@@ -1,0 +1,17 @@
+name: Deploy to Netlify (Production)
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - shell: bash
+      env:
+        PUBLISH_URL: ${{ secrets.PUBLISH_URL }}
+      run: |
+        curl -X POST -d "$PUBLISH_URL"
