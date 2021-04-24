@@ -5,12 +5,13 @@ on:
     tags:
       - "*"
 
-build:
-  runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-  steps:
-    - shell: bash
-    env:
-      PUBLISH_URL: ${{ secrets.PUBLISH_URL }}
-    run: |
-      curl -X POST -d "$PUBLISH_URL"
+    steps:
+      - shell: bash
+      env:
+        PUBLISH_URL: ${{ secrets.PUBLISH_URL }}
+      run: |
+        curl -X POST -d "$PUBLISH_URL"
