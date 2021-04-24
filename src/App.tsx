@@ -54,14 +54,18 @@ function App() {
   return (
     <div className="App">
       <p>Hello world</p>
-      <button onClick={async () => await handleHiLowClick()}>
+      <button id="hiLow-btn" onClick={async () => await handleHiLowClick()}>
         Play HiLow Intro
       </button>
-      <button onClick={async () => await handleHBClick()}>
+      <button id="hb17-btn" onClick={async () => await handleHBClick()}>
         Play HB '17 Bass Feature
       </button>
-      <button onClick={async () => await handleADClick()}>Play AD</button>
-      <button onClick={async () => await parseXML()}>Play XML file</button>
+      <button id="ad-btn" onClick={async () => await handleADClick()}>
+        Play AD
+      </button>
+      <button id="xml-btn" onClick={async () => await parseXML()}>
+        Play XML file
+      </button>
     </div>
   );
 }

@@ -12,6 +12,7 @@ class AudioContext {
   async start() {
     if (!this.isStarted) {
       await Tone.start();
+      this.isStarted = true;
     }
   }
 }
