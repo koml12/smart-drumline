@@ -13,4 +13,4 @@ jobs:
         env:
           PUBLISH_URL: ${{ secrets.PUBLISH_URL }}
         run: |
-          curl -X POST -d "$PUBLISH_URL"
+          curl -X POST -d $PUBLISH_URL
