@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Call deploy hook
-        shell: bash
+      - shell: bash
         env:
           PUBLISH_URL: ${{ secrets.PUBLISH_URL }}
         run: |
